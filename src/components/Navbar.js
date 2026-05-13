@@ -29,8 +29,8 @@ export default function Navbar() {
 
         <ul className={`navbar-links${open ? ' open' : ''}`}>
           <li><Link href="/" onClick={() => setOpen(false)}>Beranda</Link></li>
-          <li><Link href="/#games" onClick={() => setOpen(false)}>Top Up</Link></li>
-          <li><Link href="/#joki" onClick={() => setOpen(false)}>Joki</Link></li>
+          {/* <li><Link href="/#games" onClick={() => setOpen(false)}>Top Up</Link></li>
+          <li><Link href="/#joki" onClick={() => setOpen(false)}>Joki</Link></li> */}
           <li><Link href="/cek-order" onClick={() => setOpen(false)}><Search size={14} /> Cek Order</Link></li>
           
           {/* Riwayat - selalu tampil, tapi beri notif login jika belum login */}
