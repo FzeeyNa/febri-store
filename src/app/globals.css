@@ -1200,6 +1200,114 @@ input, select, textarea { font-family: inherit; }
   font-size: 0.85rem;
 }
 
+/* ===== NEW OURA STORE LAYOUT ===== */
+.popular-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.horizontal-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--gradient-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.horizontal-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
+  z-index: 0;
+}
+
+.horizontal-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-glow);
+}
+
+.hc-img-wrapper {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.hc-content {
+  flex: 1;
+  z-index: 1;
+}
+
+.hc-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.hc-subtitle {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+
+.category-tabs-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.category-tabs-wrapper::-webkit-scrollbar {
+  height: 4px;
+}
+
+.category-tabs-wrapper::-webkit-scrollbar-thumb {
+  background: var(--color-surface-lighter);
+  border-radius: 4px;
+}
+
+.tab-btn {
+  background: var(--color-surface);
+  border: 1px solid var(--border-color);
+  color: var(--color-text-secondary);
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  background: var(--color-surface-lighter);
+  color: var(--color-text);
+}
+
+.tab-btn.active {
+  background: var(--gradient-accent);
+  color: var(--color-primary);
+  border-color: transparent;
+  box-shadow: 0 4px 15px rgba(212,160,23,0.3);
+}
+
 .admin-stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

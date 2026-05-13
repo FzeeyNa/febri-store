@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getTopUpGames, getJokiServices, STORE_INFO } from '@/lib/products';
 import { Zap, MessageCircle, ShieldCheck, Gamepad2, Trophy, ClipboardList, PenSquare, CreditCard, CheckCircle2, Clock, Send, UserCheck, ArrowRight } from 'lucide-react';
+import PopularSection from '@/components/PopularSection';
 
 export default function Home() {
   const topUpGames = getTopUpGames();
@@ -27,84 +28,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Top Up Games */}
-      <section className="section" id="games">
-        <div className="container">
-          <div className="section-title">
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '12px' }}>
-              <Gamepad2 size={32} color="var(--color-accent)" />
-              <h2 style={{ marginBottom: 0 }}>Top Up Game</h2>
-            </div>
-            <p>Pilih game favorit kamu dan top up dengan harga terjangkau</p>
-          </div>
-          <div className="games-grid">
-            {topUpGames.map((game) => (
-              <Link href={`/topup/${game.slug}`} key={game.id}>
-                <div className="game-card fade-in">
-                  <div style={{ width: '100%', height: 160, position: 'relative' }}>
-                    <Image 
-                      src={
-                        game.slug === 'mobile-legends' ? '/mlbb.jpeg' : 
-                        game.slug === 'pubg-mobile' ? '/pubg.png' : 
-                        game.slug === 'free-fire' ? '/freefire.jpeg' : 
-                        '/roblox.jpeg'
-                      }
-                      alt={game.name}
-                      fill
-                      style={{ objectFit: 'cover' }}
-                    />
-                  </div>
-                  <div className="game-card-body">
-                    <h3>{game.name}</h3>
-                    <p className="publisher">{game.publisher}</p>
-                    <p className="description">{game.description}</p>
-                    <span className="game-card-badge"><Zap size={14} /> Proses Instan</span>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Joki Services */}
-      <section className="section" id="joki" style={{ background: 'rgba(15,34,64,0.3)' }}>
-        <div className="container">
-          <div className="section-title">
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '12px' }}>
-              <Trophy size={32} color="var(--color-accent)" />
-              <h2 style={{ marginBottom: 0 }}>Jasa Joki</h2>
-            </div>
-            <p>Push rank bareng player pro. Aman, cepat, dan terpercaya!</p>
-          </div>
-          <div className="games-grid">
-            {jokiServices.map((service) => (
-              <a href={`${STORE_INFO.whatsappLink}?text=Halo%20Febristore,%20saya%20mau%20order%20${encodeURIComponent(service.name)}`} target="_blank" rel="noopener noreferrer" key={service.id}>
-                <div className="game-card fade-in">
-                  <div style={{ width: '100%', height: 160, position: 'relative' }}>
-                    <Image 
-                      src={
-                        service.slug === 'joki-eceran' ? '/joki_eceran.png' : 
-                        service.slug === 'joki-gendong' ? '/joki_gendong.png' : 
-                        '/joki_paketan.png'
-                      }
-                      alt={service.name}
-                      fill
-                      style={{ objectFit: 'cover' }}
-                    />
-                  </div>
-                  <div className="game-card-body">
-                    <h3>{service.name}</h3>
-                    <p className="publisher">{service.publisher}</p>
-                    <p className="description">{service.description}</p>
-                    <span className="game-card-joki"><MessageCircle size={14} /> Order via WhatsApp</span>
-                  </div>
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Popular Section (Oura Store Style) */}
+      <PopularSection topUpGames={topUpGames} jokiServices={jokiServices} />
 
       {/* How it Works - Detailed */}
       <section className="section">
